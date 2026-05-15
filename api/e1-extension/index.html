@@ -1,0 +1,2133 @@
+<!DOCTYPE html><html lang="zh" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="基于 ESP32-S3-WROOM-1 的教育开发板 MicroPython SDK 文档">
+      
+      
+        <meta name="author" content="DFCK">
+      
+      
+        <link rel="canonical" href="https://example.com/api/e1-extension/">
+      
+      
+        <link rel="prev" href="../mainboard/">
+      
+      
+        <link rel="next" href="../../examples/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>E1 拓展板 API - 东方创科 2.0 教育开发板文档</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#e1-api" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="东方创科 2.0 教育开发板文档" class="md-header__button md-logo" aria-label="东方创科 2.0 教育开发板文档" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            东方创科 2.0 教育开发板文档
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              E1 拓展板 API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="light-blue" aria-label="暗色模式" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="暗色模式" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue" aria-label="亮色模式" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="亮色模式" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="分享" aria-label="分享" data-clipboard="" data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"></path></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/rdhuht/dfck-edu-docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    rdhuht/dfck-edu-docs
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../getting-started/" class="md-tabs__link">
+          
+  
+  
+  快速开始
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../python-basics/" class="md-tabs__link">
+          
+  
+  
+  API 参考
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../examples/" class="md-tabs__link">
+          
+  
+  
+  示例代码
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="东方创科 2.0 教育开发板文档" class="md-nav__button md-logo" aria-label="东方创科 2.0 教育开发板文档" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
+
+    </a>
+    东方创科 2.0 教育开发板文档
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/rdhuht/dfck-edu-docs" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    rdhuht/dfck-edu-docs
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    快速开始
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    快速开始
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    快速开始
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API 参考
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    API 参考
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Python 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mainboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2.0 主板 API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E1 拓展板 API
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E1 拓展板 API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        传感器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="传感器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数字类传感器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数字类传感器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buttonget_stateport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        button.get_state(port)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pirget_stateport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PIR.get_state(port)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模拟类传感器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="模拟类传感器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#voiceget_valueport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        voice.get_value(port)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lightget_valueport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        light.get_value(port)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uvget_valueport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uv.get_value(port)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soilhumidityget_valueport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        soilHumidity.get_value(port)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhtget_valuetype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHT.get_value(type)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数字类/PWM脉冲驱动
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数字类/PWM脉冲驱动">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ultrasonicget_distanceport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ultrasonic.get_distance(port)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        执行器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="执行器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数字类
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数字类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rgbset_colorport-r-g-b-brightness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rgb.set_color(port, [r, g, b], brightness)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ledset_stateport-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        led.set_state(port, state)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwm_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数字类/PWM脉冲驱动
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数字类/PWM脉冲驱动">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#geekservoset_angleport-angle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        geekServo.set_angle(port, angle)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servoset_angleport-angle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        servo.set_angle(port, angle)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buzzerplay_musicport-num" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        buzzer.play_music(port, num)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fanset_speedport-speed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fan.set_speed(port, speed)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IIC 类
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IIC 类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clockdigitaltubeon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        clockDigitalTube.on()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clockdigitaltubeoff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        clockDigitalTube.off()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clockdigitaltubeclear" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        clockDigitalTube.clear()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clockdigitaltubeset_brightnessvalue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        clockDigitalTube.set_brightness(value)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clockdigitaltubedisplayinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        clockDigitalTube.display(info)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clockdigitaltubedisplay_placeseat-num" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        clockDigitalTube.display_place(seat, num)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clockdigitaltubedisplaydpseat-bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        clockDigitalTube.displayDP(seat, bool)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clockdigitaltubedisplay_timehour-minute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        clockDigitalTube.display_time(hour, minute)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    示例代码
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    示例代码
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    示例代码
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        传感器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="传感器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数字类传感器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数字类传感器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#buttonget_stateport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        button.get_state(port)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pirget_stateport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        PIR.get_state(port)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        模拟类传感器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="模拟类传感器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#voiceget_valueport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        voice.get_value(port)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lightget_valueport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        light.get_value(port)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uvget_valueport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        uv.get_value(port)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#soilhumidityget_valueport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        soilHumidity.get_value(port)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dhtget_valuetype" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DHT.get_value(type)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数字类/PWM脉冲驱动
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数字类/PWM脉冲驱动">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ultrasonicget_distanceport" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ultrasonic.get_distance(port)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        执行器
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="执行器">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数字类
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数字类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rgbset_colorport-r-g-b-brightness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        rgb.set_color(port, [r, g, b], brightness)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ledset_stateport-state" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        led.set_state(port, state)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pwm_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        数字类/PWM脉冲驱动
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="数字类/PWM脉冲驱动">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#geekservoset_angleport-angle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        geekServo.set_angle(port, angle)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#servoset_angleport-angle" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        servo.set_angle(port, angle)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#buzzerplay_musicport-num" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        buzzer.play_music(port, num)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fanset_speedport-speed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        fan.set_speed(port, speed)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iic" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IIC 类
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="IIC 类">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clockdigitaltubeon" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        clockDigitalTube.on()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clockdigitaltubeoff" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        clockDigitalTube.off()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clockdigitaltubeclear" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        clockDigitalTube.clear()
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clockdigitaltubeset_brightnessvalue" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        clockDigitalTube.set_brightness(value)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clockdigitaltubedisplayinfo" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        clockDigitalTube.display(info)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clockdigitaltubedisplay_placeseat-num" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        clockDigitalTube.display_place(seat, num)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clockdigitaltubedisplaydpseat-bool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        clockDigitalTube.displayDP(seat, bool)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clockdigitaltubedisplay_timehour-minute" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        clockDigitalTube.display_time(hour, minute)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="e1-api">E1 拓展板 API</h1>
+<blockquote>
+<p>导入方式：
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">tqpy</span><span class="w"> </span><span class="kn">import</span> <span class="o">*</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="n">set_extend_board</span><span class="p">(</span><span class="s2">"E1"</span><span class="p">)</span>
+</code></pre></div><p></p>
+<p>端口格式：需要完整输入，例如 <code>D0</code>、<code>P0</code>、<code>S0</code></p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>端口</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>数字类</td>
+<td>P0-P5</td>
+</tr>
+<tr>
+<td>模拟类</td>
+<td>P0-P5</td>
+</tr>
+<tr>
+<td>IIC</td>
+<td>P6-P8（不用写 Pin 口）</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<hr>
+<h2 id="_1">传感器</h2>
+<h3 id="_2">数字类传感器</h3>
+<h4 id="buttonget_stateport">button.get_state(port)</h4>
+<p>检测按钮是否按下。</p>
+<p><strong>参数：</strong> <code>port</code> - 字符串，接口 <code>"P0"</code> ~ <code>"P5"</code></p>
+<p><strong>返回值：</strong> <code>bool</code> - True 表示检测到按下</p>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">if</span> <span class="n">button</span><span class="o">.</span><span class="n">get_state</span><span class="p">(</span><span class="s2">"P0"</span><span class="p">):</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Button pressed"</span><span class="p">)</span>
+</code></pre></div>
+<hr>
+<h4 id="pirget_stateport">PIR.get_state(port)</h4>
+<p>人体红外传感器是否检测到人。</p>
+<p><strong>参数：</strong> <code>port</code> - 字符串，接口 <code>"P0"</code> ~ <code>"P5"</code></p>
+<p><strong>返回值：</strong> <code>bool</code> - True 表示检测到</p>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">if</span> <span class="n">PIR</span><span class="o">.</span><span class="n">get_state</span><span class="p">(</span><span class="s2">"P0"</span><span class="p">):</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">"Person detected"</span><span class="p">)</span>
+</code></pre></div>
+<hr>
+<h3 id="_3">模拟类传感器</h3>
+<h4 id="voiceget_valueport">voice.get_value(port)</h4>
+<p>获取声音传感器的声音强度。</p>
+<p><strong>参数：</strong> <code>port</code> - 字符串，接口 <code>"P0"</code> ~ <code>"P5"</code></p>
+<p><strong>返回值：</strong> <code>int</code> - 范围 0-1023</p>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">level</span> <span class="o">=</span> <span class="n">voice</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s2">"P0"</span><span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Sound level: </span><span class="si">{</span><span class="n">level</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<hr>
+<h4 id="lightget_valueport">light.get_value(port)</h4>
+<p>获取光线传感器的数值。</p>
+<p><strong>参数：</strong> <code>port</code> - 字符串，接口 <code>"P0"</code> ~ <code>"P5"</code></p>
+<p><strong>返回值：</strong> <code>int</code> - 范围 0-1023</p>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="n">light_value</span> <span class="o">=</span> <span class="n">light</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s2">"P0"</span><span class="p">)</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Light: </span><span class="si">{</span><span class="n">light_value</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<hr>
+<h4 id="uvget_valueport">uv.get_value(port)</h4>
+<p>获取旋钮传感器的数值。</p>
+<p><strong>参数：</strong> <code>port</code> - 字符串，接口 <code>"P0"</code> ~ <code>"P5"</code></p>
+<p><strong>返回值：</strong> <code>int</code> - 范围 0-1023</p>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="n">value</span> <span class="o">=</span> <span class="n">uv</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s2">"P0"</span><span class="p">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"UV value: </span><span class="si">{</span><span class="n">value</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<hr>
+<h4 id="soilhumidityget_valueport">soilHumidity.get_value(port)</h4>
+<p>获取土壤湿度传感器的数值。</p>
+<p><strong>参数：</strong> <code>port</code> - 字符串，接口 <code>"P0"</code> ~ <code>"P5"</code></p>
+<p><strong>返回值：</strong> <code>int</code> - 范围 0-1023</p>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="n">humidity</span> <span class="o">=</span> <span class="n">soilHumidity</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s2">"P0"</span><span class="p">)</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Soil humidity: </span><span class="si">{</span><span class="n">humidity</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+</code></pre></div>
+<hr>
+<h4 id="dhtget_valuetype">DHT.get_value(type)</h4>
+<p>获取温湿度传感器的值。</p>
+<p><strong>参数：</strong> <code>type</code> - 字符串
+- <code>"temperature"</code> - 温度
+- <code>"humidity"</code> - 湿度</p>
+<p><strong>返回值：</strong> <code>float</code>
+- 湿度范围：0-100%RH
+- 温度范围：-40~+120℃</p>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="n">temp</span> <span class="o">=</span> <span class="n">DHT</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s2">"temperature"</span><span class="p">)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="n">humidity</span> <span class="o">=</span> <span class="n">DHT</span><span class="o">.</span><span class="n">get_value</span><span class="p">(</span><span class="s2">"humidity"</span><span class="p">)</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Temperature: </span><span class="si">{</span><span class="n">temp</span><span class="si">}</span><span class="s2">℃, Humidity: </span><span class="si">{</span><span class="n">humidity</span><span class="si">}</span><span class="s2">%RH"</span><span class="p">)</span>
+</code></pre></div>
+<hr>
+<h3 id="pwm">数字类/PWM脉冲驱动</h3>
+<h4 id="ultrasonicget_distanceport">ultrasonic.get_distance(port)</h4>
+<p>获取超声波传感器检测到的距离。</p>
+<p><strong>参数：</strong> <code>port</code> - 字符串，接口 <code>"P0"</code> ~ <code>"P5"</code></p>
+<p><strong>返回值：</strong> <code>int</code> - 障碍物的距离（2-250cm）</p>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="n">distance</span> <span class="o">=</span> <span class="n">ultrasonic</span><span class="o">.</span><span class="n">get_distance</span><span class="p">(</span><span class="s2">"P0"</span><span class="p">)</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Distance: </span><span class="si">{</span><span class="n">distance</span><span class="si">}</span><span class="s2">cm"</span><span class="p">)</span>
+</code></pre></div>
+<hr>
+<h2 id="_4">执行器</h2>
+<h3 id="_5">数字类</h3>
+<h4 id="rgbset_colorport-r-g-b-brightness">rgb.set_color(port, [r, g, b], brightness)</h4>
+<p>控制全彩灯。</p>
+<p><strong>参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>port</td>
+<td>str</td>
+<td>接口 P0-P5</td>
+</tr>
+<tr>
+<td>[r, g, b]</td>
+<td>list</td>
+<td>RGB 颜色，每个元素范围 0-255</td>
+</tr>
+<tr>
+<td>brightness</td>
+<td>int</td>
+<td>亮度 0-100</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># 设置 P0 端口的全彩灯为红色，亮度 50</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="n">rgb</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">"P0"</span><span class="p">,</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">50</span><span class="p">)</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># 绿色</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="n">rgb</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">"P0"</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="mi">50</span><span class="p">)</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="c1"># 蓝色</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="n">rgb</span><span class="o">.</span><span class="n">set_color</span><span class="p">(</span><span class="s2">"P0"</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">],</span> <span class="mi">50</span><span class="p">)</span>
+</code></pre></div>
+<hr>
+<h4 id="ledset_stateport-state">led.set_state(port, state)</h4>
+<p>控制单色 LED 灯。</p>
+<p><strong>参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>port</td>
+<td>str</td>
+<td>接口 P0-P5</td>
+</tr>
+<tr>
+<td>state</td>
+<td>str</td>
+<td><code>"on"</code> 点亮，<code>"off"</code> 熄灭</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="n">led</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="s2">"P0"</span><span class="p">,</span> <span class="s2">"on"</span><span class="p">)</span>   <span class="c1"># 点亮</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="n">led</span><span class="o">.</span><span class="n">set_state</span><span class="p">(</span><span class="s2">"P0"</span><span class="p">,</span> <span class="s2">"off"</span><span class="p">)</span>  <span class="c1"># 熄灭</span>
+</code></pre></div>
+<hr>
+<h3 id="pwm_1">数字类/PWM脉冲驱动</h3>
+<h4 id="geekservoset_angleport-angle">geekServo.set_angle(port, angle)</h4>
+<p>控制 Geekservo 舵机角度。</p>
+<p><strong>参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>port</td>
+<td>str</td>
+<td>接口 P0-P5</td>
+</tr>
+<tr>
+<td>angle</td>
+<td>int</td>
+<td>角度 0-270</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># 将 Geekservo 转到 90 度位置</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="n">geekServo</span><span class="o">.</span><span class="n">set_angle</span><span class="p">(</span><span class="s2">"P0"</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># 转到 180 度</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="n">geekServo</span><span class="o">.</span><span class="n">set_angle</span><span class="p">(</span><span class="s2">"P0"</span><span class="p">,</span> <span class="mi">180</span><span class="p">)</span>
+</code></pre></div>
+<hr>
+<h4 id="servoset_angleport-angle">servo.set_angle(port, angle)</h4>
+<p>控制数字舵机角度。</p>
+<p><strong>参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>port</td>
+<td>str</td>
+<td>接口 P0-P5</td>
+</tr>
+<tr>
+<td>angle</td>
+<td>int</td>
+<td>角度 0-180</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># 将数字舵机转到 90 度位置</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="n">servo</span><span class="o">.</span><span class="n">set_angle</span><span class="p">(</span><span class="s2">"P0"</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+</code></pre></div>
+<hr>
+<h4 id="buzzerplay_musicport-num">buzzer.play_music(port, num)</h4>
+<p>播放蜂鸣器内置音乐。</p>
+<p><strong>参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>port</td>
+<td>str</td>
+<td>接口 P1-P3</td>
+</tr>
+<tr>
+<td>num</td>
+<td>int</td>
+<td>音乐序号 1-5</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>音乐</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>生日快乐</td>
+</tr>
+<tr>
+<td>2</td>
+<td>欢乐颂</td>
+</tr>
+<tr>
+<td>3</td>
+<td>葫芦娃</td>
+</tr>
+<tr>
+<td>4</td>
+<td>两只老虎</td>
+</tr>
+<tr>
+<td>5</td>
+<td>警鸣声</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># 播放 P1 端口的生日快乐</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="n">buzzer</span><span class="o">.</span><span class="n">play_music</span><span class="p">(</span><span class="s2">"P1"</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># 播放警鸣声</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="n">buzzer</span><span class="o">.</span><span class="n">play_music</span><span class="p">(</span><span class="s2">"P1"</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</code></pre></div>
+<hr>
+<h4 id="fanset_speedport-speed">fan.set_speed(port, speed)</h4>
+<p>设置风扇的转速。</p>
+<p><strong>参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>port</td>
+<td>str</td>
+<td>接口 P0-P3</td>
+</tr>
+<tr>
+<td>speed</td>
+<td>int</td>
+<td>转速 0-100</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># 全速运转</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="n">fan</span><span class="o">.</span><span class="n">set_speed</span><span class="p">(</span><span class="s2">"P0"</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># 半速运转</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="n">fan</span><span class="o">.</span><span class="n">set_speed</span><span class="p">(</span><span class="s2">"P0"</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1"># 停止</span>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="n">fan</span><span class="o">.</span><span class="n">set_speed</span><span class="p">(</span><span class="s2">"P0"</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<hr>
+<h3 id="iic">IIC 类</h3>
+<h4 id="clockdigitaltubeon">clockDigitalTube.on()</h4>
+<p>时钟数码管启用。</p>
+<p>除停用、清屏、设置亮度外，其他函数中均包含此函数。</p>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="n">clockDigitalTube</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+</code></pre></div>
+<hr>
+<h4 id="clockdigitaltubeoff">clockDigitalTube.off()</h4>
+<p>时钟数码管停用（停用不清除内存）。</p>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="n">clockDigitalTube</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+</code></pre></div>
+<hr>
+<h4 id="clockdigitaltubeclear">clockDigitalTube.clear()</h4>
+<p>时钟数码管清屏（清除内存并黑屏）。</p>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="n">clockDigitalTube</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+</code></pre></div>
+<hr>
+<h4 id="clockdigitaltubeset_brightnessvalue">clockDigitalTube.set_brightness(value)</h4>
+<p>设置时钟数码管亮度。</p>
+<p><strong>参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>int</td>
+<td>亮度 1-15</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="n">clockDigitalTube</span><span class="o">.</span><span class="n">set_brightness</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+</code></pre></div>
+<hr>
+<h4 id="clockdigitaltubedisplayinfo">clockDigitalTube.display(info)</h4>
+<p>时钟数码管显示内容。</p>
+<p><strong>参数：</strong> <code>info</code> - 整数(int)、小数(float)、字符串(str)</p>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="n">clockDigitalTube</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="n">clockDigitalTube</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="mi">1234</span><span class="p">)</span>      <span class="c1"># 显示整数</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="n">clockDigitalTube</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="mf">12.34</span><span class="p">)</span>     <span class="c1"># 显示小数</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="n">clockDigitalTube</span><span class="o">.</span><span class="n">display</span><span class="p">(</span><span class="s2">"OPEN"</span><span class="p">)</span>    <span class="c1"># 显示字符串</span>
+</code></pre></div>
+<hr>
+<h4 id="clockdigitaltubedisplay_placeseat-num">clockDigitalTube.display_place(seat, num)</h4>
+<p>在指定位置显示数字。</p>
+<p><strong>参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>seat</td>
+<td>int</td>
+<td>位置 1-4</td>
+</tr>
+<tr>
+<td>num</td>
+<td>int</td>
+<td>数字 0-9</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="n">clockDigitalTube</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="n">clockDigitalTube</span><span class="o">.</span><span class="n">display_place</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># 第 1 位显示 1</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="n">clockDigitalTube</span><span class="o">.</span><span class="n">display_place</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># 第 2 位显示 2</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="n">clockDigitalTube</span><span class="o">.</span><span class="n">display_place</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># 第 3 位显示 3</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="n">clockDigitalTube</span><span class="o">.</span><span class="n">display_place</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>  <span class="c1"># 第 4 位显示 4</span>
+</code></pre></div>
+<hr>
+<h4 id="clockdigitaltubedisplaydpseat-bool">clockDigitalTube.displayDP(seat, bool)</h4>
+<p>在指定位置点亮小数点。</p>
+<p><strong>参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>seat</td>
+<td>int</td>
+<td>位置 1-4</td>
+</tr>
+<tr>
+<td>bool</td>
+<td>bool</td>
+<td>True/False</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="n">clockDigitalTube</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="n">clockDigitalTube</span><span class="o">.</span><span class="n">display_place</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="n">clockDigitalTube</span><span class="o">.</span><span class="n">displayDP</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>  <span class="c1"># 第 1 位小数点点亮</span>
+</code></pre></div>
+<hr>
+<h4 id="clockdigitaltubedisplay_timehour-minute">clockDigitalTube.display_time(hour, minute)</h4>
+<p>显示时间（不支持自计时，需要添加变量，右对齐）。</p>
+<p><strong>参数：</strong></p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hour</td>
+<td>int</td>
+<td>小时 0-23</td>
+</tr>
+<tr>
+<td>minute</td>
+<td>int</td>
+<td>分钟 0-59</td>
+</tr>
+</tbody>
+</table>
+<p><strong>示例：</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="n">clockDigitalTube</span><span class="o">.</span><span class="n">on</span><span class="p">()</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="n">clockDigitalTube</span><span class="o">.</span><span class="n">display_time</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>  <span class="c1"># 显示 12:30</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2024 DFCK
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/example" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
