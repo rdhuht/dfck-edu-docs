@@ -1,0 +1,75 @@
+site_name: 东方创科 2.0 教育开发板文档
+site_description: 基于 ESP32-S3-WROOM-1 的教育开发板 MicroPython SDK 文档
+site_author: DFCK
+site_url: https://example.com/
+
+repo_name: dfck-edu-board
+repo_url: https://github.com/example/dfck-edu-board
+
+copyright: Copyright © 2024 DFCK
+
+theme:
+  name: material
+  language: zh
+  palette:
+    - scheme: default
+      primary: blue
+      accent: light blue
+      toggle:
+        icon: material/weather-night
+        name: 暗色模式
+
+    - scheme: slate
+      primary: blue
+      accent: light blue
+      toggle:
+        icon: material/weather-sunny
+        name: 亮色模式
+
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.tabs.link
+
+markdown_extensions:
+  - admonition
+  - tables
+  - attr_list
+  - md_in_html
+
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+
+plugins:
+  - search
+  - glightbox
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/example
+
+nav:
+  - 首页: index.md
+
+  - 快速开始:
+      - 快速开始: getting-started/index.md
+
+  - API 参考:
+      - Python 基础: api/python-basics.md
+      - 2.0 主板 API: api/mainboard.md
+      - E1 拓展板 API: api/e1-extension.md
+
+  - 示例代码:
+      - 示例代码: examples/index.md
