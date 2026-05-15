@@ -16,6 +16,9 @@ esptool.py --chip esp32s3 --port COMX erase_flash
 esptool.py --chip esp32s3 --port COMX write_flash 0x0 firmware.bin
 ```
 
+!!! tip "MicroPython 官方文档"
+    了解更多 MicroPython 语法和标准库，请参阅 [MicroPython 官方文档](https://docs.micropython.org/)。
+
 ### 3. 上传 Python 模块
 
 根据使用的硬件平台上对应的模块文件：

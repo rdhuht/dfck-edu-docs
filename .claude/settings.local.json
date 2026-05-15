@@ -6,7 +6,8 @@
       "Bash(mkdocs build *)",
       "Bash(mkdocs serve *)",
       "Bash(gh auth *)",
-      "Bash(git *)"
+      "Bash(git *)",
+      "Bash(mkdocs gh-deploy *)"
     ]
   }
 }
