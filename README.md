@@ -42,17 +42,26 @@ docs/
 ├── api/
 │   ├── python-basics.md  # Python 基础
 │   ├── mainboard.md      # 2.0 主板 API
-│   └── e1-extension.md   # E1 拓展板 API
+│   ├── e1-extension.md   # E1 拓展板 API
+│   ├── e2-extension.md   # E2 拓展板 API
+│   ├── e3-extension.md   # E3 拓展板 API
+│   └── ai-module.md      # AI 模块 API
 └── examples/
     └── index.md          # 综合示例
 ```
 
 ## 版本记录
 
+### v1.1.0 (2026-08-18)
+- 新增 E2 拓展板 (`tqpy` + `set_extend_board("E2")`) API 文档
+- 新增 E3 拓展板（含编码电机）API 文档
+- 新增 AI 模块（视觉识别：颜色 / 色块 / 线条 / 二维码 / 标签 / 深度学习 / 卡片 / 人脸）API 文档
+- 更新首页、快速开始，新增硬件平台表与端口说明
+
 ### v1.0.0 (2026-05-15)
 - 初始版本
-- 支持 2.0 主板 (dfck_block) API 文档
-- 支持 E1 拓展板 (tqpy) API 文档
+- 支持 2.0 主板 (`dfck_block`) API 文档
+- 支持 E1 拓展板 (`tqpy`) API 文档
 - 包含 Python 基础语法参考
 - 包含综合示例代码
 
@@ -89,5 +98,6 @@ git push --force
 
 | 版本 | Commit | 说明 |
 |------|--------|------|
+| v1.1.0 | (待提交) | 新增 E2 / E3 拓展板与 AI 模块文档 |
 | v1.0.0 | c871cac | 更新仓库地址 |
 | v1.0.0 | beb4636 | 初始版本上传 |

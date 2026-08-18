@@ -70,6 +70,9 @@ nav:
       - Python 基础: api/python-basics.md
       - 2.0 主板 API: api/mainboard.md
       - E1 拓展板 API: api/e1-extension.md
+      - E2 拓展板 API: api/e2-extension.md
+      - E3 拓展板 API: api/e3-extension.md
+      - AI 模块 API: api/ai-module.md
 
   - 示例代码:
       - 示例代码: examples/index.md
