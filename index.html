@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.ec1eaa64.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.ab4e12ef.min.css">
@@ -711,6 +711,90 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/e2-extension/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E2 拓展板 API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/e3-extension/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    E3 拓展板 API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="api/ai-module/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AI 模块 API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -928,7 +1012,22 @@
 <tr>
 <td>E1 拓展板</td>
 <td><code>tqpy</code></td>
-<td><code>from tqpy import *</code></td>
+<td><code>from tqpy import *</code><br><code>set_extend_board("E1")</code></td>
+</tr>
+<tr>
+<td>E2 拓展板</td>
+<td><code>tqpy</code></td>
+<td><code>from tqpy import *</code><br><code>set_extend_board("E2")</code></td>
+</tr>
+<tr>
+<td>E3 拓展板</td>
+<td><code>tqpy</code></td>
+<td><code>from tqpy import *</code><br><code>set_extend_board("E3")</code></td>
+</tr>
+<tr>
+<td>AI 模块</td>
+<td><code>tqpy</code></td>
+<td><code>from tqpy import *</code><br><code>set_extend_board("E2")</code></td>
 </tr>
 </tbody>
 </table>
@@ -945,6 +1044,10 @@
 <li>板载音频</li>
 <li>丰富的外设接口</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">AI 模块连接说明</p>
+<p>AI 模块使用 I2C 接口，可连接 E1 / E2 / E3 任一拓展板的 I2C 接口，无需选择 port 端口。</p>
+</div>
 <h2 id="_3">快速开始</h2>
 <ol>
 <li>刷入 MicroPython 固件</li>
@@ -956,7 +1059,10 @@
 <ul>
 <li><a href="getting-started/">快速开始</a> - 环境搭建与固件刷写</li>
 <li><a href="api/mainboard/">2.0 主板 API</a> - dfck_block 模块 API</li>
-<li><a href="api/e1-extension/">E1 拓展板 API</a> - tqpy 模块 API</li>
+<li><a href="api/e1-extension/">E1 拓展板 API</a> - tqpy 模块 E1 接口</li>
+<li><a href="api/e2-extension/">E2 拓展板 API</a> - tqpy 模块 E2 接口</li>
+<li><a href="api/e3-extension/">E3 拓展板 API</a> - tqpy 模块 E3 接口（含编码电机）</li>
+<li><a href="api/ai-module/">AI 模块 API</a> - 摄像头与视觉识别</li>
 <li><a href="examples/">示例代码</a> - 常用示例</li>
 </ul>
 <h2 id="_5">示例</h2>
@@ -1054,7 +1160,7 @@
       <script id="__config" type="application/json">{"annotate": null, "base": ".", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "content.tabs.link"], "search": "assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
       
     
   
